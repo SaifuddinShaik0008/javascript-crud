@@ -24,13 +24,12 @@ form.addEventListener('submit', (e) => {
     form.reset();
 });
 
-// Save data and render table
+
 function saveAndRender() {
     localStorage.setItem('formData', JSON.stringify(data));
     renderTable();
 }
 
-// Render table
 function renderTable() {
     tableBody.innerHTML = data.map((record, index) => `
         <tr>
@@ -47,7 +46,7 @@ function renderTable() {
     `).join('');
 }
 
-// Edit record
+
 function editRecord(index) {
     const record = data[index];
     form.name.value = record.name;
@@ -56,11 +55,10 @@ function editRecord(index) {
     form.dataset.editIndex = index;
 }
 
-// Delete record
+
 function deleteRecord(index) {
     data.splice(index, 1);
     saveAndRender();
 }
 
-// Initial render
 renderTable();
